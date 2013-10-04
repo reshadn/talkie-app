@@ -7,7 +7,6 @@ server.listen(8080);
 
 app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');
-  console.log('index ready');
 });
 
 app.get('/app.js', function(req, res) {
@@ -15,12 +14,10 @@ app.get('/app.js', function(req, res) {
 });
 
 io.sockets.on('connection', function (socket) {
-  socket.emit('new:msg', 'Welcome to AnonBoard');
-  console.log('welcome');
+  socket.emit('new:msg', 'Welcome to Talkie!');
 
   socket.on('broadcast:msg', function(data) {
     // Tell all the other clients (except self) about the new message
     socket.broadcast.emit('new:msg', data.message);
-    console.log('new message sent');
   });
 });
