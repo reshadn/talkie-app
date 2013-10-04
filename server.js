@@ -14,7 +14,7 @@ app.get('/app.js', function(req, res) {
   res.sendfile(__dirname + '/app.js');
 });
 
-io.socket.on('connection', function (socket) {
+io.sockets.on('connection', function (socket) {
   socket.emit('new:msg', 'Welcome to AnonBoard');
   console.log('welcome');
 
