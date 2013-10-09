@@ -1,9 +1,13 @@
-var express = require('express')
+var WebSocketServer = require('ws').Server
+	, express = require('express')
   , app = express()
   , server = require('http').createServer(app)
-  , io = require('socket.io').listen(server);
+  , io = require('socket.io').listen(server)
+  , port = process.env.PORT || 5000;
 
-server.listen(8080);
+server.listen(port);
+
+console.log('http server listening on %d', port);
 
 app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');
