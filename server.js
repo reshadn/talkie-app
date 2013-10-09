@@ -5,12 +5,6 @@ var express = require('express')
 
 server.listen(8080);
 
-// assuming io is the Socket.IO server object
-io.configure(function () { 
-  io.set("transports", ["xhr-polling"]); 
-  io.set("polling duration", 10); 
-});
-
 app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');
 });
